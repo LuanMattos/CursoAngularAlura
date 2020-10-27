@@ -1,11 +1,10 @@
 <span>Foto component - Example</span>
 <p>Aqui criamos um componente e passamos atributos para ele</p>
-<ap-photo
-  description="Lion"
-  url="https://img.elo7.com.br/product/original/1C33C7D/quadro-tela-animais-leao-decoracao-telas-animal-0005-quadro-de-leao.jpg">
-</ap-photo>
+
 
 <ap-photo
-  description="Cão"
-  url="https://s2.glbimg.com/z38cvd1l6M_nk8lFU2GyCXhdeLE=/0x0:1280x720/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/3/j/7APRrpRSyBNYLBjFFciA/whatsapp-image-2019-02-22-at-14.53.01.jpeg">
+  *ngFor="let a of photos"
+  [url]="a.url"
+  [description]="a.description"
+>
 </ap-photo>

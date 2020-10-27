@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {PhotoService} from "./photos/photo/photo.service";
+import {Photo} from "./photos/photo/photo";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import {PhotoService} from "./photos/photo/photo.service";
 export class AppComponent {
   title = 'App';
   /** TypeScript = Quando não tipamos o dado, o mesmo retorn tipo n **/
-   photos:Object[] = [];
+   photos:Photo[] = [];
 
   constructor(photoService : PhotoService) {
     photoService.listFromUser('flavio')

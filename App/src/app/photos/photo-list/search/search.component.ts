@@ -15,7 +15,10 @@ import {debounceTime} from "rxjs/operators";
   templateUrl:'./search.component.html'
 })
 export class SearchComponent implements OnInit {
+  /** Pai ---> Filho **/
   @Output() onTyping = new EventEmitter<string>();
+
+  /** Filho ---> Pai **/
   @Input() value:string = '';
   /**
    * Contrário do Observable que é multicast, o Subject é multicast e envia/recebe de/para todos assinantes

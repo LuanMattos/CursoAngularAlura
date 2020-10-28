@@ -13,3 +13,6 @@
 </div>
 <!--Aqui, no nosso filtro, photos e filter serão nossos parâmetros-->
 <app-photos [photos]="photos | filterByDescription:filter"></app-photos>
+
+<!--Load do component-->
+<app-load-button [hasMore]="hasMore" (click)="load()"></app-load-button>

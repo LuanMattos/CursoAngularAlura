@@ -25,13 +25,18 @@ export class PhotoListComponent implements OnInit,OnDestroy {
    * **/
   debounce:Subject<string> = new Subject<string>();
 
+  hasMore:Boolean = true;
+  currentPage:number = 1;
+  userName:string = '';
+
   /**
    * (inserido no resolver)
    * Deixaremos o construtor apenas para injeção de dependências
    **/
   constructor(
     //private photoService : PhotoService,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute:ActivatedRoute,
+    private photoService : PhotoService
   ) {}
 
   /**
@@ -42,6 +47,7 @@ export class PhotoListComponent implements OnInit,OnDestroy {
    **/
 
   ngOnInit():void{
+    this.userName = this.activatedRoute.snapshot.params.userName;
     /** Aqui pegamos o parâmetro da rota - (inserido no resolver)*/
     // const userName = this.activatedRoute.snapshot.params.userName;
     // this.photoService.listFromUser(userName)
@@ -57,5 +63,33 @@ export class PhotoListComponent implements OnInit,OnDestroy {
   ngOnDestroy():void {
     /** Precisamos desalocar memória do nosso Observable **/
     this.debounce.unsubscribe()
+  }
+  load(){
+    this.photoService
+      .listFromUserPaginated(this.userName,this.currentPage ++)
+      .subscribe(
+        /**
+         * Faz push de cada item adicionado no back 1,2,3,4,5,6...
+         * Se retonrar vazio, não adiciona nata
+         * **/
+        photos=>{
+          /**
+           * Contrário do Vue (que escuta os v-model's), o código com push
+           *  NÃO atualizara a lista no photo-list.component, portanto precisamos
+           *    gerar nova lista com concat
+           *
+           * As vezes com Vue esquecemos alguns conceitos básico de JS, um exemplo é este
+           *  onde push adiciona elementos à lista, fazendo com que o template não escute essas mudanças
+           *  já que é inerente ao escopo dele.
+           *  Já o concat força o retorno de um novo Array.
+           *
+           * @Ler sobre ChangeDetector
+           * https://angular.io/api/core/ChangeDetectorRef
+           */
+           // this.photos.push(...photos);
+          this.photos = this.photos.concat(photos);
+          if(!photos.length) this.hasMore = false;
+        }
+      )
   }
 }

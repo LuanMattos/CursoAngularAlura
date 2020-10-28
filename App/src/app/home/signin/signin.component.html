@@ -1,0 +1,47 @@
+<h4 class="text-center">Login</h4>
+
+<form class="form mt-4" [formGroup]="loginForm">
+
+  <div class="form-group">
+    <!-- formControlName (Nome dos campos no component (userName:[]) -->
+    <input
+      formControlName="userName"
+      class="form-control"
+      placeholder="Nome de usuário"
+      autofocus>
+
+<!--    Acredite, podemos fazer 'terneiro' assim no Angular-->
+    <small
+      *ngIf="loginForm.get('userName').errors?.required"
+      class="text-danger d-block mt-2">
+      Nome de usuário é obrigatório!
+    </small>
+  </div>
+
+  <div class="form-group">
+    <!-- formControlName (Nome dos campos no component (password:[]) -->
+    <input
+      formControlName="password"
+      type="password"
+      class="form-control"
+      placeholder="Senha">
+<!--    Acredite, podemos fazer 'terneiro' assim no Angular-->
+    <small
+      *ngIf="loginForm.get('password').errors?.required"
+      class="text-danger d-block mt-2">
+      Senha é obrigatória!
+    </small>
+  </div>
+
+<!-- Não precisamos fazer a gambiarra de pegar campo por campo e criar um novo método -->
+<!--  o próprio validate do Angular faz isso pra nós ;) -->
+  <button
+    [disabled]="loginForm.invalid"
+    type="submit"
+    class="btn btn-primary btn-block">
+    login
+  </button>
+
+</form>
+
+<p>Não é registrado?<a>Registre-se agora</a></p>

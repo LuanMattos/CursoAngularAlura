@@ -16,23 +16,29 @@ export class PhotoListComponent implements OnInit {
   filter:string = '';
 
   /**
+   * (inserido no resolver)
    * Deixaremos o construtor apenas para injeção de dependências
    **/
   constructor(
-    private photoService : PhotoService,
+    //private photoService : PhotoService,
     private activatedRoute:ActivatedRoute
   ) {}
 
   /**
+   * (inserido no resolver)
    * E ngOnInit (Live Circle) para objetos de inicialização
    * O correto é o Angular 'Obrigao' a implementação do método, então implementamos a
    *  interface OnInit na classe (implements OnInit)
    **/
 
   ngOnInit():void{
-    /** Aqui pegamos o parâmetro da rota */
-    const userName = this.activatedRoute.snapshot.params.userName;
-    this.photoService.listFromUser(userName)
-      .subscribe(photos => this.photos = photos)
+    /** Aqui pegamos o parâmetro da rota - (inserido no resolver)*/
+    // const userName = this.activatedRoute.snapshot.params.userName;
+    // this.photoService.listFromUser(userName)
+    //   .subscribe(photos => this.photos = photos)
+
+    /** Busca os dados do activateRoute **/
+    this.photos = this.activatedRoute.snapshot.data['photos'];
+
   }
 }

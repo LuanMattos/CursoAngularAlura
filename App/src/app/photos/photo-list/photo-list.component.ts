@@ -13,6 +13,7 @@ export class PhotoListComponent implements OnInit {
   title = 'App';
   /** TypeScript = Quando não tipamos o dado, o mesmo retorn tipo n **/
   photos:Photo[] = [];
+  filter:string = '';
 
   /**
    * Deixaremos o construtor apenas para injeção de dependências

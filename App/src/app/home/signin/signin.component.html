@@ -1,10 +1,11 @@
 <h4 class="text-center">Login</h4>
 
-<form class="form mt-4" [formGroup]="loginForm">
+<form class="form mt-4" [formGroup]="loginForm" (submit)="login()">
 
   <div class="form-group">
     <!-- formControlName (Nome dos campos no component (userName:[]) -->
     <input
+      #userNameInput
       formControlName="userName"
       class="form-control"
       placeholder="Nome de usuário"

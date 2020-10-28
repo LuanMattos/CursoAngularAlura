@@ -11,5 +11,5 @@
 <!--    () = Event Bind VIEW para o COMPONENT -->
   </form>
 </div>
-<app-photos [photos]="photos"></app-photos>
-{{filter}}
+<!--Aqui, no nosso filtro, photos e filter serão nossos parâmetros-->
+<app-photos [photos]="photos | filterByDescription:filter"></app-photos>

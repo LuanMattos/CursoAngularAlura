@@ -15,9 +15,8 @@ import {PhotoModule} from "./photo/photo.module";
    *  se eu declaro uma biblioteca neste módulo, o mesmo NÃO instancia para seus filhos
    * Perceba que em TODOS os módulos FILHOS precisamos importar o CommonModule
    **/
-  declarations:[],
-  /** Sem o exports, o Module não funciona **/
-  imports:[
+  declarations: [],
+  imports: [
     PhotoListModule,
     PhotoFormModule,
     PhotoModule

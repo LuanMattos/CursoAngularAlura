@@ -1,0 +1,14 @@
+<div class="text-center mt-3 mb-3 ">
+  <form class="w-50 mx-auto">
+    <input
+      class="rounded form-control"
+      type="search"
+      placeholder="search..."
+      autofocus
+      (keyup)="debounce.next($event.target.value)"
+      [value]="value"
+    >
+    <!--    [] = Data Bind  COMPONENT para a VIEW -->
+    <!--    () = Event Bind VIEW para o COMPONENT -->
+  </form>
+</div>

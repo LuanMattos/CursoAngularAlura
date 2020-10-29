@@ -7,7 +7,7 @@ import * as jwt_decode from 'jwt-decode';
 @Injectable({providedIn:'root'})
 export class UserService{
 
-  /** Ver explicação no header.component (diferença de Observable e BehaviorSubject **/
+  /** Ver explicação no header.component (diferença de Subject e BehaviorSubject **/
   private userSubject = new BehaviorSubject<User>(null);
   private userName:string;
 

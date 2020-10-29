@@ -10,16 +10,19 @@ import {Router} from "@angular/router";
  * A diferença do Subject e BehaviorSubject:
  *
  *    BehaviorSubject =>  -Precisa de um valor inicial e retorna um valor mesmo que não tenha recebido um next()
- *                        -RETORNA O ULTIMO VALOR DO ASSUNTO
+ *                        -RETORNA O ULTIMO VALOR DO ASSUNTO POIS GUARDA EM MEMÓRIA
  *
- *    Observable =>       -Dispara os valores apenas quando recebe o next()
+ *    Subject =>       -Dispara os valores apenas quando recebe o next(), ou seja, não mantem o valor em MEMÓRIA
+ *
+ *    Observable =>    -(Unidirecional) Fica escutando mudanças. Parecido como o antigo $watch, que verificava todos escopo, mas o Observable não,
+ *                      pois cada ação é tratada por eventos, ai cada evento emite uma notificação.
  *
  *    Detalhe: Ainda precisamos usar o Observable no header.component, pois ele fica escutando os valores.
  *      Mudamos no user.service apenas, para que o BehaviorSubject envie os valores constantemente
  *
  *    Resumindo:
- *      Observable não guardo o valor, apenas emite uma vez.
- *      Behavior guarda o ULTIMO valor (armazena a última emissão até que alguém apareça para consumi-la. <Alura>)
+ *      Subject não guardo o valor, apenas emite uma vez.
+ *      Behavior Subject guarda o ULTIMO valor (armazena a última emissão até que alguém apareça para consumi-la. <Alura>)
  *
  **/
 @Component({

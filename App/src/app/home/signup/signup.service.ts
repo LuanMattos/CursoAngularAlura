@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {NewUser} from "./new-user.interface";
 
 const API = 'http://localhost:3000';
 
@@ -20,5 +21,8 @@ export class SignupService{
    ***/
   checkUserNameTaken(userName:string){
    return this.httpCliente.get(API + '/user/exists/' + userName)
+  }
+  newUser( newUser:NewUser ){
+    return this.httpCliente.post(API + '/user/signup',newUser);
   }
 }

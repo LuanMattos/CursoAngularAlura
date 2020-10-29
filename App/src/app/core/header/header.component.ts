@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 
 import {UserService} from "../user/user.service";
 import {User} from "../user/user";
+import {Router} from "@angular/router";
 /**
  * Quando implementamos um Observale sozinho (sem o ), nosso Observable emite apenas uma Vez ao carregar o App,
  *    com isso, ao recarregar a página, o nome de usuário  SOME para nosso DESESPERO
@@ -29,7 +30,10 @@ export class HeaderComponent{
   /** user$ => Boa prática user para descrever um Observable **/
   user$:Observable<User>;
   user:User;
-  constructor(userService:UserService) {
+  constructor(
+    private userService:UserService,
+    private router:Router
+    ) {
     this.user$ = userService.getUser();
     /** Novamente, pegamos o objeto observável(user$) e populamos this.user, porque não podemos usar um Observable no UI (Mentira, podemos sim - olhe no header.component) **/
     /** Lembrando, podemos usar async no nosso template e não precisamo do subscrice ;)  (ver no header.component) **/
@@ -37,5 +41,10 @@ export class HeaderComponent{
 
     //descomentar se não for usar async
     //this.user$.subscribe(user => this.user = user);
+
+  }
+  logout(){
+    this.router.navigate([''])
+    this.userService.logout();
   }
 }

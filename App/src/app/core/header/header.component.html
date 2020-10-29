@@ -8,8 +8,9 @@
 <!--    Podemos fazer assim:-->
 
     <div *ngIf="(user$ | async) as user;else login">
-      <i class="fa fa-user-circle"></i>
+      <i class="fa fa-user-circle mr-2"></i>
       <a class="ml-2">{{user?.name}}</a>
+      <a class="ml-2" (click)="logout()">Sair</a>
     </div>
 
 <!--    Sem async -->

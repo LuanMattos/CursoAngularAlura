@@ -8,6 +8,7 @@ export class TokenService{
   hasToken(){
     return !!this.getToken();
   }
+  /** setToken/getToken a nível de Funcionalidade de Token **/
   setToken(token){
       window.localStorage.setItem(KEY,token)
   }

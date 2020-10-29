@@ -1,0 +1,58 @@
+.content-general-welcome {
+  height: 100%;
+  background-size: 100%;
+  margin-top: 25%; }
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+.title {
+  top: 50px;
+  position: relative;
+  animation: animatetop 1s;
+  font-size: 32px;
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  line-height: 42px;
+  padding-bottom: 10px; }
+
+@media only screen and (max-width: 600px) {
+  .col-image {
+    display: none; }
+
+  .content-general-welcome {
+    height: 10%;
+    background-size: 50%;
+    margin-top: 10px; }
+
+  .title {
+    font-size: 23px;
+    top: 12px; }
+
+  .form-login {
+    padding: 0 !important; }
+
+  .bg-content {
+    margin-bottom: 80px; } }
+.register i.material-icons {
+  color: #90979c;
+  font-size: 12px;
+  padding-right: 1.5px; }
+
+.form-login {
+  transition: width 2s, height 1s;
+  -webkit-animation: fadeIn 1s ease-in-out;
+  -moz-animation: fadeIn 1s ease-in-out;
+  -o-animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 1s ease-in-out;
+  padding: 30px;
+  margin-top: 50px; }
+  .form-login .bg-content {
+    padding: 20px;
+    background: #eeeefc;
+    border-radius: 2px; }
+
+/*# sourceMappingURL=header.component.css.map */

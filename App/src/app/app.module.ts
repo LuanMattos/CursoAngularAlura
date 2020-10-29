@@ -14,6 +14,7 @@ import {AppRoutingModule} from './app.routing.module';
 import {AppComponent} from './app.component';
 import {PhotosModule} from "./photos/photos.module";
 import {HomeModule} from "./home/home.module";
+import {CoreModule} from "./core/core.module";
 
 
 
@@ -28,7 +29,8 @@ import {HomeModule} from "./home/home.module";
     BrowserModule,
     AppRoutingModule,
     PhotosModule,
-    HomeModule
+    HomeModule,
+    CoreModule
 
   ],
   providers: [],

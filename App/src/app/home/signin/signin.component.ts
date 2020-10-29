@@ -1,7 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../core/auth.service";
+import {AuthService} from "../../core/auth/auth.service";
+import {PlatformDetectorService} from "../../core/platform-detector/platform-detector.service";
 
 @Component({
   templateUrl:'./signin.component.html'
@@ -18,7 +19,8 @@ export class SignInComponent implements OnInit{
   constructor(
     private formBuilder:FormBuilder,
     private authService:AuthService,
-    private router:Router
+    private router:Router,
+    private platformDetectionService:PlatformDetectorService
     ) {}
 
   ngOnInit():void{
@@ -36,9 +38,14 @@ export class SignInComponent implements OnInit{
         ()=>this.router.navigate(['user',userName]),
         err=> {
           console.log(err.message)
-          /** Reza a lenda que não podemos usar Rendered, apenas o nativo do Angular **/
-          this.userNameInput.nativeElement.focus();
+
           this.loginForm.reset();
+
+          /** Reza a lenda que não podemos usar Rendered no lugar de nativeElement, apenas o nativo do Angular **/
+          /** Exemplo de como condicionar eventos se executado no Browser **/
+          this.platformDetectionService.isPlatformBrowser()
+            && this.userNameInput.nativeElement.focus();
+
         }
       )
   }

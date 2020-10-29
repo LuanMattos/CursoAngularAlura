@@ -1,9 +1,13 @@
 import {NgModule} from "@angular/core";
-import {SignInComponent} from "./signin/signin.component";
-import {ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
-import {VmessageModule} from "../shared/vmessage/vmessage.module";
 import {RouterModule} from "@angular/router";
+import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
+
+
+import {SignInComponent} from "./signin/signin.component";
+import {VmessageModule} from "../shared/vmessage/vmessage.module";
+import {SignUpComponent} from "./signup/signup.component";
 
 /**
  * Como ele vai ser carregado pelo app.module e está a nível de página, não precisamos usar Exports
@@ -11,10 +15,12 @@ import {RouterModule} from "@angular/router";
 @NgModule({
   declarations:[
     SignInComponent,
+    SignUpComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     VmessageModule,
     /**
      * No app.routing.module, já temos o mesmo importado, e deve funcionar em todos os filhos

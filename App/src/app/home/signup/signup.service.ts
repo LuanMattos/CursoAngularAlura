@@ -1,0 +1,24 @@
+import {Injectable} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
+
+const API = 'http://localhost:3000';
+
+@Injectable({providedIn:'root'})
+
+export class SignupService{
+
+  constructor(private httpCliente:HttpClient) {}
+
+  /**
+   * Esta classe tem como objetivo ser usado pelo validador, PORÉM o validador não suporta injeção de dependências
+   * Para isso criaremos o user-not-taken.validator.service.ts pra gente conseguir acessar essa validação
+   * Então quando precisamos fazer validação de campos que precisam buscar dados do BACK precisamos:
+   *    -Criar um Serviço com o retorno desses dados (igual esta classe)
+   *    -Criar outro Serviço com "função" de validador (user-not-taken.validator.service)
+   *    -Chamar o Serviço de consulta (Este) no Serviço de Validação
+   *    -Na Classe do Formulário desejado (signup.component), chamar a função desejada do Serviço validador (this.userNotTakenValidator.checkUserNameTaken())
+   ***/
+  checkUserNameTaken(userName:string){
+   return this.httpCliente.get(API + '/user/exists/' + userName)
+  }
+}

@@ -27,6 +27,7 @@ import {PhotoListResolver} from "./photos/photo-list/photo-list.resolver";
 
 const routes:Routes = [
   {
+    /** Este cara epenas redireciona para o home (que definimos como principal) **/
     path:'',
     /** Indico que deve seguir a rota path:'' exatamente como declarei **/
     /** Neste caso, se não for colocado, qualquer rota depois de '/' será considerada **/
@@ -37,18 +38,20 @@ const routes:Routes = [
     path:'home',
     /** Aqui pedimos o carregamento sob demanda **/
     // loadChildren:'./home/home.module#HomeModule' => Angular < 8
-    loadChildren:() => import('src/app/home/home.module').then(m => m.HomeModule)
+    loadChildren:() => import('src/app/home/home.module').then(m => m.HomeModule),
+    data: {animation: 'HomePage'}
   },
   {
     path:'user/:userName',
     component:PhotoListComponent,
     resolve:{
       photos:PhotoListResolver
-    }
+    },
+    data: {animation: 'AboutPage'}
   },
   {
     path:'p/add',
-    component:PhotoFormComponent
+    component:PhotoFormComponent,
   },
   {
     path:'**',

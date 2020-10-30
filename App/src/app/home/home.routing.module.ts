@@ -24,12 +24,12 @@ const routes:Routes = [
         path:'',
         component:SignInComponent,
         /** Rota que aguarda requisição antes do carregamento do component **/
-        canActivate:[AuthGuard]
+        canActivate:[AuthGuard],
       },
       /** No navegador então termos /home/signup **/
       {
         path:'signup',
-        component:SignUpComponent
+        component:SignUpComponent,
       },
     ]
   },

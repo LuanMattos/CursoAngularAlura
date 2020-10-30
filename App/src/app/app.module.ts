@@ -14,6 +14,7 @@ import {AppRoutingModule} from './app.routing.module';
 import {AppComponent} from './app.component';
 import {PhotosModule} from "./photos/photos.module";
 import {CoreModule} from "./core/core.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 
@@ -28,7 +29,8 @@ import {CoreModule} from "./core/core.module";
     BrowserModule,
     AppRoutingModule,
     PhotosModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule
 
   ],
   providers: [],

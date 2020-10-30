@@ -1,3 +1,5 @@
 <app-header></app-header>
 <!--Abre a Lacuna para que os componentes sejam exibidos por rotas, fazendo um depara das mesmas-->
-<router-outlet></router-outlet>
+<div [@routeAnimations]="prepareRoute(outlet)">
+<router-outlet #outlet="outlet"></router-outlet>
+</div>

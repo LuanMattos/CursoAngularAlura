@@ -26,10 +26,17 @@ export class SignInComponent implements OnInit{
   ngOnInit():void{
     this.loginForm = this.formBuilder.group({
         userName:['',Validators.required],
-        password:['',[Validators.required]]
+        password:['',Validators.required]
     });
   }
-  login(){
+  ngAfterViewInit() {
+      /** Para que o focus funcione, precisamos declarar o #emailIput no form do html **/
+      /** Por algum motivo essa jorça não funcionou no signup, deveria ter sido colocado no ngOnInit **/
+      this.platformDetectionService.isPlatformBrowser()
+      && this.userNameInput.nativeElement.focus();
+  }
+
+    login(){
     const userName = this.loginForm.get('userName').value;
     const password = this.loginForm.get('password').value;
 

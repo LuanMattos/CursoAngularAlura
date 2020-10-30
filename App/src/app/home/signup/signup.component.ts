@@ -1,11 +1,13 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+
 
 import {fieldsSignupValidator} from "../../shared/validators/fields-signup.validator";
 import {UserNotTakenValidatorService} from "./user-not-taken.validator.service";
 import {NewUser} from "./new-user.interface";
 import {SignupService} from "./signup.service";
-import {Router} from "@angular/router";
+import {PlatformDetectorService} from "../../core/platform-detector/platform-detector.service";
 
 @Component({
   selector: 'app-signup',
@@ -14,12 +16,14 @@ import {Router} from "@angular/router";
 export class SignUpComponent implements OnInit {
 
   signupForm: FormGroup;
+  @ViewChild('inputEmail',{static: true}) inputEmail:ElementRef<HTMLInputElement>;
 
   constructor(
     private userNotTakenValidator:UserNotTakenValidatorService,
     private formBuilder: FormBuilder,
     private signUpService:SignupService,
-    private router:Router
+    private router:Router,
+    private platformDetectionService:PlatformDetectorService
     ) {
 
   }

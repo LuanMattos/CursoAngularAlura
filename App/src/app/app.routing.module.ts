@@ -12,16 +12,25 @@ import {PhotoListResolver} from "./photos/photo-list/photo-list.resolver";
 import {SignInComponent} from "./home/signin/signin.component";
 import {AuthGuard} from "./core/auth/auth.guard";
 import {SignUpComponent} from "./home/signup/signup.component";
+import {HomeComponent} from "./home/home.component";
 
 const routes:Routes = [
   {
     path:'',
-    component:SignInComponent,
-    canActivate:[AuthGuard]
-  },
-  {
-    path:'signup',
-    component:SignUpComponent
+    component:HomeComponent,
+    /** Aqui temos nosso routerOutlet, basicamente uma rota dentro de outra rota PAI **/
+    children:[
+      {
+        path:'',
+        component:SignInComponent,
+        /** Rota que aguarda requisição antes do carregamento do component **/
+        canActivate:[AuthGuard]
+      },
+      {
+        path:'signup',
+        component:SignUpComponent
+      },
+    ]
   },
   {
     path:'user/:userName',

@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import {SignInComponent} from "./signin/signin.component";
 import {VmessageModule} from "../shared/vmessage/vmessage.module";
 import {SignUpComponent} from "./signup/signup.component";
+import {HomeComponent} from "./home.component";
 
 /**
  * Como ele vai ser carregado pelo app.module e está a nível de página, não precisamos usar Exports
@@ -15,7 +16,8 @@ import {SignUpComponent} from "./signup/signup.component";
 @NgModule({
   declarations:[
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

@@ -11,7 +11,9 @@ import {PlatformDetectorService} from "../../core/platform-detector/platform-det
 
 @Component({
   selector: 'app-signup',
-  templateUrl: 'signup.component.html'
+  templateUrl: 'signup.component.html',
+  /** Nem sempre precisamos usar nosso @Injectable como root, ou seja, nem sepre precisamos expor nosso serviço a TODA App **/
+  providers:[UserNotTakenValidatorService]
 })
 export class SignUpComponent implements OnInit {
 

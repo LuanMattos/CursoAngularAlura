@@ -3,7 +3,8 @@ import {SignupService} from "./signup.service";
 import {AbstractControl} from "@angular/forms";
 import {debounceTime, switchMap,map,first} from "rxjs/operators";
 
-@Injectable({providedIn:'root'})
+/** Nem sempre precisamos usar nosso @Injectable como root, ou seja, nem sepre precisamos expor nosso serviço a TODA App **/
+@Injectable()
 export class UserNotTakenValidatorService{
 
   constructor(private signUpService:SignupService) {}

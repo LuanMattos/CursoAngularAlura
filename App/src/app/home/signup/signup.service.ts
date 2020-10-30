@@ -4,8 +4,8 @@ import {NewUser} from "./new-user.interface";
 
 const API = 'http://localhost:3000';
 
-@Injectable({providedIn:'root'})
-
+/** Nem sempre precisamos usar nosso ... Portanto vamos declarar um provedor em home.module, já que apenas o home.module vai usá-lo **/
+@Injectable()
 export class SignupService{
 
   constructor(private httpCliente:HttpClient) {}

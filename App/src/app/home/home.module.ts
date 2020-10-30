@@ -9,6 +9,7 @@ import {SignInComponent} from "./signin/signin.component";
 import {VmessageModule} from "../shared/vmessage/vmessage.module";
 import {SignUpComponent} from "./signup/signup.component";
 import {HomeComponent} from "./home.component";
+import {HomeRoutingModule} from "./home.routing.module";
 
 /**
  * Como ele vai ser carregado pelo app.module e está a nível de página, não precisamos usar Exports
@@ -29,7 +30,8 @@ import {HomeComponent} from "./home.component";
      * pois estão dentro (juntos) do import.
      * Porém ainda é uma boa prática colocar ele no home.module pra gente saber que home.module depende do mesmo
      * **/
-    RouterModule
+    RouterModule,
+    HomeRoutingModule
   ]
 })
 export class HomeModule{}

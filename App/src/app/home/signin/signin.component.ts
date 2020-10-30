@@ -32,8 +32,8 @@ export class SignInComponent implements OnInit{
   ngAfterViewInit() {
       /** Para que o focus funcione, precisamos declarar o #emailIput no form do html **/
       /** Pode causar problema se #userNameInput estiver antes de alguma diretiva ngIf **/
-      this.platformDetectionService.isPlatformBrowser()
-      && this.userNameInput.nativeElement.focus();
+      // this.platformDetectionService.isPlatformBrowser()
+      // && this.userNameInput.nativeElement.focus();
   }
 
     login(){

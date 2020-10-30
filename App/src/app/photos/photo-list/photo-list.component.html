@@ -4,6 +4,7 @@
   (onTyping)="filter = $event"
   [value]="filter"
 ></app-search>
+
 <!--Aqui, no nosso filtro, photos e filter serão nossos parâmetros-->
 <app-photos [photos]="photos | filterByDescription:filter"></app-photos>
 

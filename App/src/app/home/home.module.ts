@@ -11,6 +11,7 @@ import {SignUpComponent} from "./signup/signup.component";
 import {HomeComponent} from "./home.component";
 import {HomeRoutingModule} from "./home.routing.module";
 import {SignupService} from "./signup/signup.service";
+import {UxModule} from "../core/ux/ux-module";
 
 /**
  * Como ele vai ser carregado pelo app.module e está a nível de página, não precisamos usar Exports
@@ -26,6 +27,7 @@ import {SignupService} from "./signup/signup.service";
     ReactiveFormsModule,
     FormsModule,
     VmessageModule,
+    UxModule,
     /**
      * No app.routing.module, já temos o mesmo importado, e deve funcionar em todos os filhos
      * pois estão dentro (juntos) do import.

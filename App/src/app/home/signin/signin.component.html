@@ -1,6 +1,6 @@
-<h4 class="text-center">Login</h4>
+<div class="text-center mt-lg-5 font-weight-bold">Acesso</div>
 
-<form class="form mt-4" [formGroup]="loginForm" (submit)="login()">
+<form class="form mt-lg-5" [formGroup]="loginForm" (submit)="login()">
 
   <div class="form-group">
 
@@ -36,13 +36,9 @@
 
 <!-- Não precisamos fazer a gambiarra de pegar campo por campo e criar um novo método -->
 <!--  o próprio validate do Angular faz isso pra nós ;) -->
-  <button
-    [disabled]="loginForm.invalid"
-    type="submit"
-    class="btn btn-primary btn-block">
-    login
-  </button>
+
+  <button class="w-100 bg-dark text-white" mat-raised-button [disabled]="loginForm.invalid" type="submit">Entrar</button>
 
 </form>
 
-<p>Não é registrado?<a [routerLink]="['signup']" class="ml-2">Registre-se agora</a></p>
+<p class="p-5">Não é registrado?<a [routerLink]="['signup']" class="ml-2">Registre-se agora</a></p>

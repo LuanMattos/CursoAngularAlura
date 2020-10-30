@@ -6,18 +6,27 @@
 
 <form class="form mt-4" [formGroup]="signupForm" (submit)="signUp()">
   <div class="form-group">
-    <input  #inputEmail placeholder="E-mail" class="form-control" autofocus formControlName="email">
+    <mat-form-field class="w-100">
+      <mat-label>E-mail</mat-label>
+    <input  #inputEmail matInput placeholder="E-mail"  autofocus formControlName="email">
+    </mat-form-field>
     <app-vmessage  *ngIf="signupForm.get('email').errors?.required" text="E-mail é obrigatório!"></app-vmessage>
     <app-vmessage *ngIf="signupForm.get('email').errors?.email" text="E-mail inválido!"></app-vmessage>
   </div>
 
   <div class="form-group">
-    <input placeholder="Nome completo" class="form-control" formControlName="fullName">
+    <mat-form-field class="w-100">
+      <mat-label>Nome completo</mat-label>
+    <input matInput placeholder="Nome completo" formControlName="fullName">
+    </mat-form-field>
     <app-vmessage *ngIf="signupForm.get('fullName').errors?.required" text="Nome completo é obrigatório!"></app-vmessage>
   </div>
 
   <div class="form-group">
-    <input placeholder="Nome de usuário" class="form-control" formControlName="userName">
+    <mat-form-field class="w-100">
+      <mat-label>Nome de usuário</mat-label>
+    <input matInput placeholder="Nome de usuário"  formControlName="userName">
+    </mat-form-field>
     <app-vmessage *ngIf="signupForm.get('userName').errors?.minlength" text="Mínimo 2 caracteres!"></app-vmessage>
     <app-vmessage *ngIf="signupForm.get('userName').errors?.maxlength" text="Máximo 30 caracteres!"></app-vmessage>
     <app-vmessage *ngIf="signupForm.get('userName').errors?.validadorPersonalizado" text="Campo obrigatório!"></app-vmessage>
@@ -28,15 +37,19 @@
   </div>
 
   <div class="form-group">
-    <input type="password" placeholder="password" class="form-control" formControlName="password">
+    <mat-form-field class="w-100">
+      <mat-label>Senha</mat-label>
+    <input matInput type="password" placeholder="password" formControlName="password">
+    </mat-form-field>
     <app-vmessage *ngIf="signupForm.get('password').errors?.required" text="Senha é obrigatória!"></app-vmessage>
     <app-vmessage *ngIf="signupForm.get('password').errors?.minlength" text="Mínimo 2 caracteres!"></app-vmessage>
     <app-vmessage *ngIf="signupForm.get('password').errors?.maxlength" text="Máximo 14 caracteres!"></app-vmessage>
   </div>
 
 <!--  ATENNÇAAAAO - na sua validação, não esqueça de usar invalid & peding-->
-  <button [disabled]="signupForm.invalid || signupForm.pending" class="btn btn-primary btn-block">Registrar</button>
+
+  <button [disabled]="signupForm.invalid || signupForm.pending" class="w-100 bg-dark text-white" mat-raised-button>Registrar</button>
 
 
-  <p>Já é registrado?<a [routerLink]="['']">Login!</a></p>
+  <p class="p-3">Já é registrado?<a [routerLink]="['']" class="ml-2">Login</a></p>
 </form>

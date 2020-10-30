@@ -37,3 +37,17 @@ $App-theme: mat-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body{
+  padding-top: 60px;
+  font-family: 'Montserrat', sans-serif !important;
+}
+input[type=button]:disabled{
+  background: #797985 !important;
+}
+button:disabled{
+  background: #797985 !important;
+}
+a{
+  text-decoration: none !important;
+  cursor:pointer !important;
+}

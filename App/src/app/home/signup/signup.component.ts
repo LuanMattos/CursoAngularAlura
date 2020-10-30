@@ -16,7 +16,7 @@ import {PlatformDetectorService} from "../../core/platform-detector/platform-det
 export class SignUpComponent implements OnInit {
 
   signupForm: FormGroup;
-  @ViewChild('inputEmail',{static: true}) inputEmail:ElementRef<HTMLInputElement>;
+  @ViewChild('inputEmail') inputEmail:ElementRef<HTMLInputElement>;
 
   constructor(
     private userNotTakenValidator:UserNotTakenValidatorService,
@@ -68,6 +68,13 @@ export class SignUpComponent implements OnInit {
       ]
     })
   }
+
+  ngAfterViewInit() {
+    /** Para que o focus funcione, precisamos declarar o #emailIput no form do html **/
+    this.platformDetectionService.isPlatformBrowser()
+    && this.inputEmail.nativeElement.value;
+  }
+
   signUp(){
     const newUser = this.signupForm.getRawValue() as NewUser;
     console.log(newUser)

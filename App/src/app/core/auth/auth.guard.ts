@@ -19,9 +19,8 @@ export class AuthGuard implements CanActivate{
 
     if(this.userService.isLogged()){
       this.router.navigate(['user',this.userService.getUserName()])
-      return false
+      return false;
     }
     return true;
   }
-
 }

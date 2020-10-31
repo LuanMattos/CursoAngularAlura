@@ -6,13 +6,13 @@
     <div *ngFor="let photo of rows; let i = index"
          class="col-lg-4 {{i === 0?'col-md-12':'col-md-6'}} mb-4 z-depth-1-half wow fadeIn">
       <app-card>
-        <ap-photo
+        <app-photo
           appDarkenOnHover
           brightness="55%"
           [url]="photo.url"
           [description]="photo.description"
         >
-        </ap-photo>
+        </app-photo>
       </app-card>
       <div class="text-center">
         <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2 text-muted"></i>{{ photo.likes }}

@@ -2,14 +2,16 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 
-/** Components */
+/** Class */
 import {PhotoListComponent} from "./photos/photo-list/photo-list.component";
 import {PhotoFormComponent} from "./photos/photo-form/photo-form.component";
 import {NotFoundComponent} from "./errors/not-found/not-found.component";
+import {AuthRequiredGuard} from "./core/auth/auth-required.guard";
 
 
 /** Resolvers */
 import {PhotoListResolver} from "./photos/photo-list/photo-list.resolver";
+
 
 
 /**
@@ -52,6 +54,8 @@ const routes:Routes = [
   {
     path:'p/add',
     component:PhotoFormComponent,
+    data: {animation: 'HomePage'},
+    canActivate:[AuthRequiredGuard]
   },
   {
     path:'**',

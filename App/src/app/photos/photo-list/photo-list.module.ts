@@ -12,14 +12,17 @@ import {DarkenOnHoverModule} from "../../shared/directives/dark-on-hover/darken-
 import {UxModule} from "../../core/ux/ux-module";
 
 @NgModule({
-  declarations:[
+  declarations: [
     PhotoListComponent,
     FilterByDescription,
     PhotosComponent,
     LoadButtonComponent,
     SearchComponent
   ],
-  imports:[
+  exports: [
+    PhotosComponent
+  ],
+  imports: [
     /** Lembra da "treta" do BrowserModule? (explicação em app.module)*/
     CommonModule,
     PhotoModule,

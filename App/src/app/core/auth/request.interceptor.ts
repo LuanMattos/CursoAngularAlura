@@ -25,11 +25,11 @@ export class RequestInterceptor implements HttpInterceptor{
 
 
     /** Se você for olhar nos cabeçalhos de suas requisições, podemos ver neste exemplo **/
-    req = req.clone({
-      setHeaders:{
-        'Teste':'Este cabeçalho Http não existe'
-      }
-    });
+    // req = req.clone({
+    //   setHeaders:{
+    //     'Teste':'Este cabeçalho Http não existe'
+    //   }
+    // });
 
     /** Deixa passar qualquer request
      * req => requisição atual

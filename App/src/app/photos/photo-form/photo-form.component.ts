@@ -28,6 +28,7 @@ export class PhotoFormComponent implements OnInit {
     })
   }
   upload(){
+    this.handleFile(this.file)
     const description = this.photoForm.get('description').value;
     const allowComments = this.photoForm.get('allowComments').value;
     this.photoService
@@ -40,6 +41,10 @@ export class PhotoFormComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = (event:any) => this.preview = event.target.result;
       reader.readAsDataURL(file);
+  }
+  removeFile(){
+    this.photoForm.get('file').reset()
+    this.preview = null
   }
 
 }

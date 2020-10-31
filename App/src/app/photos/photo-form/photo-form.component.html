@@ -1,5 +1,6 @@
-<div class="container">
+<div class="container mt-5">
   <form class="row" [formGroup]="photoForm" (submit)="upload()">
+
     <div class="col-md-6 text-center">
       <div class="form-group card" *ngIf="!preview; else showPreview">
         <button type="button" (click)="fileInput.click()" class="bg-transparent border-0 cursor-pointer">
@@ -10,15 +11,17 @@
                hidden
                type="file"
                accept="image/*"
-               (change)="handleFile($event.target?.files[0])"
+               (change)="handleFile($event.target.files[0])"
         >
         <app-vmessage
           *ngIf="photoForm.get('file').errors?.required"
-          text="Insira uma imagem"></app-vmessage>
+          text="Insira uma imagem">
+        </app-vmessage>
       </div>
       <ng-template #showPreview>
-        <div class="text-center">
-          <app-photo [url]="preview" title="Preview">
+        <div class="text-center " appDarkenOnHover  brightness="70%">
+          <i class="fa fa-times pb-2 text-danger cursor-pointer" (click)="removeFile()"></i>
+          <app-photo [url]="preview" title="Preview" class="mt-lg-5">
           </app-photo>
         </div>
       </ng-template>
@@ -26,11 +29,15 @@
 
     <div class="col-md-6">
       <div class="form-group">
-        <textarea
-          formControlName="description"
-          class="form-control form-control-sm"
-          placeholder="photo description">
+        <mat-form-field class="w-100">
+          <mat-label>Descreva este momento</mat-label>
+          <textarea
+            rows="10"
+            matInput
+            formControlName="description"
+          >
         </textarea>
+        </mat-form-field>
         <app-vmessage
           *ngIf="photoForm.get('description').errors?.maxlength"
           text="Máximo 300 caracteres"></app-vmessage>
@@ -38,20 +45,24 @@
 
       <div class="form-group">
         <label class="text-muted">
-          Allow comments
+          Ativar comentários
           <input
             formControlName="allowComments"
             type="checkbox">
         </label>
       </div>
 
-      <button [disabled]="photoForm.invalid"
-              type="submit"
-              class="btn btn-primary btn-block">
-        Upload
-      </button>
-
-      <a class="btn btn-secondary btn-block">Cancel</a>
+      <div class="form-group">
+        <button [disabled]="photoForm.invalid"
+                type="submit"
+                mat-raised-button
+                class="w-100 bg-dark text-white">
+          Postar
+        </button>
+      </div>
+      <div class="form-group">
+        <a class="w-100 bg-dark text-white" [routerLink]="['']"  mat-raised-button>Cancelar</a>
+      </div>
     </div>
   </form>
 </div>

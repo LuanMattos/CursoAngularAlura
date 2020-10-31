@@ -10,6 +10,7 @@ import {CardModule} from "../../shared/card/card.module";
 import {SearchComponent} from "./search/search.component";
 import {DarkenOnHoverModule} from "../../shared/directives/dark-on-hover/darken-on-hover.module";
 import {UxModule} from "../../core/ux/ux-module";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {UxModule} from "../../core/ux/ux-module";
     PhotoModule,
     CardModule,
     DarkenOnHoverModule,
-    UxModule
+    UxModule,
+    RouterModule
   ]
 })
 export class PhotoListModule{

@@ -14,6 +14,11 @@ export class PhotoService {
    **/
   constructor(private http: HttpClient) {}
 
+  findById(id : number){
+
+    return this.http.get<Photo>(API + 'photos/' + id);
+  }
+
   listFromUser(userName : string){
     /**
      * Precisamos tipar o dado, pois o Angular não sabe o tipo que estará vindo do Back

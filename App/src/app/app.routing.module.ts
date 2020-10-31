@@ -11,6 +11,7 @@ import {AuthRequiredGuard} from "./core/auth/auth-required.guard";
 
 /** Resolvers */
 import {PhotoListResolver} from "./photos/photo-list/photo-list.resolver";
+import {PhotoDetailComponent} from "./photos/photo-detail/photo-detail.component";
 
 
 
@@ -56,6 +57,11 @@ const routes:Routes = [
     component:PhotoFormComponent,
     data: {animation: 'HomePage'},
     canActivate:[AuthRequiredGuard]
+  },
+  {
+    path:'p/:photoId',
+    component:PhotoDetailComponent,
+    data: {animation: 'FilterPage'},
   },
   {
     path:'**',

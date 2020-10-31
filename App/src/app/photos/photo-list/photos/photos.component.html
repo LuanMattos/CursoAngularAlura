@@ -5,15 +5,17 @@
   <div class="row">
     <div *ngFor="let photo of rows; let i = index"
          class="col-lg-4 {{i === 0?'col-md-12':'col-md-6'}} mb-4 z-depth-1-half wow fadeIn">
-      <app-card>
-        <app-photo
-          appDarkenOnHover
-          brightness="55%"
-          [url]="photo.url"
-          [description]="photo.description"
-        >
-        </app-photo>
-      </app-card>
+      <a [routerLink]="['/p',photo.id]">
+        <app-card>
+          <app-photo
+            appDarkenOnHover
+            brightness="55%"
+            [url]="photo.url"
+            [description]="photo.description"
+          >
+          </app-photo>
+        </app-card>
+      </a>
       <div class="text-center">
         <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2 text-muted"></i>{{ photo.likes }}
         <i aria-hidden="true" class="fa fa-comment-o fa-1x mr-2 ml-2 text-muted"></i>{{ photo.comments }}

@@ -12,6 +12,7 @@ import {Observable} from "rxjs";
 export class PhotoDetailComponent implements OnInit{
 
   photo$:Observable<Photo>;
+  photoId:number;
 
   constructor(
     private activatedRoute:ActivatedRoute,
@@ -19,7 +20,8 @@ export class PhotoDetailComponent implements OnInit{
 
     ngOnInit():void {
     /** photoId=> Id do parâmetro enviado pelo photo.routing no html **/
-    const photoId = this.activatedRoute.snapshot.params.photoId
-    this.photo$ = this.photoService.findById(photoId);
+    this.photoId  = this.activatedRoute.snapshot.params.photoId
+    this.photo$    = this.photoService.findById(this.photoId);
+
   }
 }

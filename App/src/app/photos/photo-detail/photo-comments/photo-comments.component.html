@@ -1,0 +1,38 @@
+<div *ngIf="(comments$ | async) as comments">
+  <ul class="list-unstyled">
+    <li *ngFor="let comment of comments">
+      <a class="text-dark font-weight-bold mr-1" [routerLink]="['/user', comment.userName]">
+        {{ comment.userName }}
+      </a>
+      <em>
+        {{ comment.date | date:'dd-MM-yyyy HH:mm' }}
+      </em>
+      <p class="break-word mb-2">
+        {{ comment.text }}
+      </p>
+    </li>
+  </ul>
+  <div class="mt-4">
+    <form [formGroup]="commentForm">
+      <div class="form-group">
+        <textarea formControlName="comment" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <button
+          mat-raised-button
+          (click)="save()"
+          [disabled]="commentForm.invalid"
+          class="w-100 bg-dark text-white">Publicar
+        </button>
+      </div>
+      <app-vmessage
+        text="Máximo permitido de 300 caracteres"
+        *ngIf="commentForm.get('comment').errors?.maxlength"
+      ></app-vmessage>
+      <app-vmessage
+        text="Campo é obrigatório"
+        *ngIf="commentForm.get('comment').errors?.required"
+      ></app-vmessage>
+    </form>
+  </div>
+</div>

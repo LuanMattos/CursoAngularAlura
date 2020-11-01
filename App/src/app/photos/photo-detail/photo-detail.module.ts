@@ -8,12 +8,15 @@ import {PhotoModule} from "../photo/photo.module";
 import {PhotoCommentsComponent} from "./photo-comments/photo-comments.component";
 import {VmessageModule} from "../../shared/vmessage/vmessage.module";
 import {UxModule} from "../../core/ux/ux-module";
+import {PhotoOwnerOnlyDirective} from "./directives/photo-owner-only.directive";
 
 
 @NgModule({
   declarations:[
     PhotoDetailComponent,
-    PhotoCommentsComponent
+    PhotoCommentsComponent,
+    /** Lembrando, todo mundo de declaration tera acesso **/
+    PhotoOwnerOnlyDirective
   ],
   exports:[
     PhotoDetailComponent,

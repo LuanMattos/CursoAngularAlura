@@ -38,6 +38,15 @@ export class PhotoListComponent implements OnInit {
    **/
 
   ngOnInit():void{
+    /**
+     * Caso tenhar problema de clicar no voltar e não carregar o component
+     * Provavelmente nas versões do Angular temos essa questão melhorada
+     * de ficar escutando as rotas
+     **/
+    // this.activatedRoute.params.subscribe(params=>{
+    //   this.userName = params.userName,
+    //     this.photos = this.activatedRoute.snapshot.data['photos']
+    // })
     this.userName = this.activatedRoute.snapshot.params.userName;
     /** Aqui pegamos o parâmetro da rota - (inserido no resolver)*/
     // const userName = this.activatedRoute.snapshot.params.userName;

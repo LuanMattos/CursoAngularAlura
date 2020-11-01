@@ -1,9 +1,10 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Observable} from "rxjs";
+
 
 import {PhotoService} from "../photo/photo.service";
 import {Photo} from "../photo/photo";
-import {Observable} from "rxjs";
 
 @Component({
   selector:'app-photo-detail',
@@ -15,6 +16,7 @@ export class PhotoDetailComponent implements OnInit{
   photoId:number;
 
   constructor(
+    private router:Router,
     private activatedRoute:ActivatedRoute,
     private photoService:PhotoService) {}
 
@@ -22,6 +24,11 @@ export class PhotoDetailComponent implements OnInit{
     /** photoId=> Id do parâmetro enviado pelo photo.routing no html **/
     this.photoId  = this.activatedRoute.snapshot.params.photoId
     this.photo$    = this.photoService.findById(this.photoId);
-
+  }
+  removePhoto(){
+    return this.photoService.removePhoto(this.photoId)
+      .subscribe(()=>{
+        this.router.navigate([''])
+      })
   }
 }

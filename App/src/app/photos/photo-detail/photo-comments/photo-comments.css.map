@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,aAAa;EACX,UAAU,EAAE,IAAI;EAChB,UAAU,EAAE,IAAI",
+"sources": ["photo-comments.scss"],
+"names": [],
+"file": "photo-comments.css"
+}

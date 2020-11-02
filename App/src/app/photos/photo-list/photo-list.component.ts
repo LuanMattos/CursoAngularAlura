@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 import {Photo} from '../photo/photo';
 import {PhotoService} from '../photo/photo.service';
@@ -27,8 +27,11 @@ export class PhotoListComponent implements OnInit {
   constructor(
     //private photoService : PhotoService,
     private activatedRoute:ActivatedRoute,
-    private photoService : PhotoService
-  ) {}
+    private photoService : PhotoService,
+    private route:Router
+  ) {
+
+  }
 
   /**
    * (inserido no resolver)

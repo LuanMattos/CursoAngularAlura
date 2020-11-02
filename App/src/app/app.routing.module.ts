@@ -64,8 +64,12 @@ const routes:Routes = [
     data: {animation: 'FilterPage'},
   },
   {
-    path:'**',
+    path:'not-found',
     component:NotFoundComponent
+  },
+  {
+    path:'**',
+    redirectTo:'not-found'
   },
 
 ];

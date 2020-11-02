@@ -54,3 +54,31 @@ a{
 .cursor-pointer{
   cursor: pointer !important;
 }
+.alert-success{
+  background-color:#3e68f9 !important;
+  border-radius: 0 !important;
+  border:0 !important;
+  margin:0 !important;
+  color:#eeeefc !important;
+}
+.alert-danger{
+  background-color:#d83243 !important;
+  border-radius: 0 !important;
+  border:0 !important;
+  margin:0 !important;
+  color:#eeeefc !important;
+}
+.alert-warning{
+  background-color:orange !important;
+  border-radius: 0 !important;
+  border:0 !important;
+  margin:0 !important;
+  color:#eeeefc !important;
+}
+.alert-info{
+  background-color:#4e4e56 !important;
+  border-radius: 0 !important;
+  border:0 !important;
+  margin:0 !important;
+  color:#eeeefc !important;
+}

@@ -14,7 +14,7 @@ export class PhotosComponent implements OnChanges {
 
   constructor() { }
   /**
-   * Escuta as mudanças - Praticamente um Watcher
+   * Escuta as mudanças - Praticamente um Watcher do Vue
    **/
   ngOnChanges(changes: SimpleChanges) {
     /** Se houver mudanças no photos */

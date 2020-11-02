@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 
 import {PhotoService} from "../photo/photo.service";
 import {Photo} from "../photo/photo";
+import {AlertService} from "../../shared/alert/alert.service";
 
 @Component({
   selector:'app-photo-detail',
@@ -16,6 +17,7 @@ export class PhotoDetailComponent implements OnInit{
   photoId:number;
 
   constructor(
+    private alertService:AlertService,
     private router:Router,
     private activatedRoute:ActivatedRoute,
     private photoService:PhotoService) {}
@@ -24,11 +26,24 @@ export class PhotoDetailComponent implements OnInit{
     /** photoId=> Id do parâmetro enviado pelo photo.routing no html **/
     this.photoId  = this.activatedRoute.snapshot.params.photoId
     this.photo$    = this.photoService.findById(this.photoId);
+
+    /** Id de foto que não existe **/
+    this.photo$.subscribe(()=>{},(err)=>{
+      this.router.navigate(['not-found'])
+    })
   }
   removePhoto(){
+    this.alertService.success('Imagem excluída! (código comentado para não excluir)')
+    this.router.navigate([''])
+    return
     return this.photoService.removePhoto(this.photoId)
       .subscribe(()=>{
+
         this.router.navigate([''])
-      })
+      },
+        error=>{
+        this.alertService.warning('Ocorreu um erro, tente mais tarde!')
+          }
+        )
   }
 }

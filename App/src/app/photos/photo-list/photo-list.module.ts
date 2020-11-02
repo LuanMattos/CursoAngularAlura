@@ -11,6 +11,7 @@ import {SearchComponent} from "./search/search.component";
 import {DarkenOnHoverModule} from "../../shared/directives/dark-on-hover/darken-on-hover.module";
 import {UxModule} from "../../core/ux/ux-module";
 import {RouterModule} from "@angular/router";
+import {ShowIsLoggedModule} from "../../shared/directives/show-is-logged/show-is-logged.module";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {RouterModule} from "@angular/router";
     CardModule,
     DarkenOnHoverModule,
     UxModule,
-    RouterModule
+    RouterModule,
+    ShowIsLoggedModule
   ]
 })
 export class PhotoListModule{

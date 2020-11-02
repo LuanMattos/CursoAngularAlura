@@ -8,7 +8,7 @@
         <p class="text-left break-word">{{photo?.description}}</p>
         <div class="text-left mb-4">
           <i class="fa fa-comment-o fa-2x mr-2 ml-2 cursor-pointer"></i>{{ photo.comments }}
-          <i photoOwnerOnly [ownedPhoto]="photo" (click)="removePhoto()" class="fa fa-trash-o fa-2x pull-right cursor-pointer"></i>
+          <i photoOwnerOnly [ownedPhoto]="photo" showIsLogged (click)="removePhoto()" class="fa fa-trash-o fa-2x pull-right cursor-pointer"></i>
         </div>
         <hr>
       </small>

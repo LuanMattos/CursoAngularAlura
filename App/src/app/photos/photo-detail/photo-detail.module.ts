@@ -8,15 +8,15 @@ import {PhotoModule} from "../photo/photo.module";
 import {PhotoCommentsComponent} from "./photo-comments/photo-comments.component";
 import {VmessageModule} from "../../shared/vmessage/vmessage.module";
 import {UxModule} from "../../core/ux/ux-module";
-import {PhotoOwnerOnlyDirective} from "./directives/photo-owner-only.directive";
+import {PhotoOwnerOnlyModule} from "../../shared/directives/owner-only/photo-owner-only.module";
+import {ShowIsLoggedModule} from "../../shared/directives/show-is-logged/show-is-logged.module";
 
 
 @NgModule({
   declarations:[
     PhotoDetailComponent,
-    PhotoCommentsComponent,
     /** Lembrando, todo mundo de declaration tera acesso **/
-    PhotoOwnerOnlyDirective
+    PhotoCommentsComponent,
   ],
   exports:[
     PhotoDetailComponent,
@@ -29,7 +29,9 @@ import {PhotoOwnerOnlyDirective} from "./directives/photo-owner-only.directive";
     RouterModule,
     ReactiveFormsModule,
     VmessageModule,
-    UxModule
+    UxModule,
+    PhotoOwnerOnlyModule,
+    ShowIsLoggedModule
   ]
 })
 export class PhotoDetailModule{}

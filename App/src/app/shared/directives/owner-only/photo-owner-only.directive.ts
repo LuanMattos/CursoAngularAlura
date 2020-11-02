@@ -1,6 +1,6 @@
 import {Directive, ElementRef, HostListener, Input, OnInit, Renderer2} from "@angular/core";
 
-import {Photo} from "../../photo/photo";
+import {Photo} from "../../../photos/photo/photo";
 import {UserService} from "../../../core/user/user.service";
 
 @Directive({
@@ -18,7 +18,8 @@ export class PhotoOwnerOnlyDirective implements OnInit{
   ngOnInit(){
     this.userService.getUser()
       .subscribe(user => {
-        if(user.id != this.ownedPhoto.userId){
+        if(this.userService.isLogged())
+        if(user && user.id != this.ownedPhoto.userId){
           this.render.setStyle(this.el.nativeElement,'display','none');
         }
       })

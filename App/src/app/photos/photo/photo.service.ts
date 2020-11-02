@@ -2,8 +2,9 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Photo} from "./photo";
 import {PhotoComment} from "./photo-comment";
+import {environment} from "../../../environments/environment";
 
-const API = 'http://localhost:3000/';
+const API = environment.ApiUrl;
 
 /**Com Injectable TODA a aplicação vai poder usar o servço de Fotos*/
 @Injectable({providedIn:'root'})
@@ -57,3 +58,8 @@ export class PhotoService {
     return this.http.delete(API + 'photos/' + photoId)
   }
 }
+// Lista de Api's
+/**
+curtida:
+photos/photoId/like
+**/

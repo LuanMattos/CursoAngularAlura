@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {NewUser} from "./new-user.interface";
+import {environment} from "../../../environments/environment";
 
-const API = 'http://localhost:3000';
+const API = environment.ApiUrl;
 
 /** Nem sempre precisamos usar nosso ... Portanto vamos declarar um provedor em home.module, já que apenas o home.module vai usá-lo **/
 @Injectable()

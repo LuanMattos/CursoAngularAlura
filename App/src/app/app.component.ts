@@ -22,8 +22,8 @@ export class AppComponent{
      * Plugin utilizado => Route Transition Animation
      **/
   prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData
-      && outlet.activatedRouteData.animation
-      && (outlet.activatedRouteData.title  && this.titleService.setTitle(outlet.activatedRouteData.title));
+      (outlet.activatedRouteData.title  && this.titleService.setTitle(outlet.activatedRouteData.title))
+      return outlet && outlet.activatedRouteData
+      && outlet.activatedRouteData.animation;
   }
 }

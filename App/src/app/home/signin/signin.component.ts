@@ -40,7 +40,9 @@ export class SignInComponent implements OnInit{
     const userName = this.loginForm.get('userName').value;
     const password = this.loginForm.get('password').value;
 
-    this.authService.authenticate(userName,password)
+    if(this.loginForm.invalid && !this.loginForm.pending)
+
+      this.authService.authenticate(userName,password)
       .subscribe(
         ()=>this.router.navigate(['user',userName]),
         err=> {

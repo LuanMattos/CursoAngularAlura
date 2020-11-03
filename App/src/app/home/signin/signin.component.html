@@ -1,6 +1,6 @@
 <div class="text-center mt-lg-5 font-weight-bold">Acesso</div>
 
-<form class="form mt-lg-5" [formGroup]="loginForm" (submit)="login()">
+<form class="form mt-lg-5" [formGroup]="loginForm" (submit)="login()" #form="ngForm">
 
   <div class="form-group">
 
@@ -15,7 +15,7 @@
 
 <!--    Acredite, podemos fazer 'terneiro' assim no Angular-->
     <app-vmessage
-      *ngIf="loginForm.get('userName').errors?.required"
+      *ngIf="loginForm.get('userName').errors?.required && form.submitted"
       text="Nome de usuário é obrigatório!"
     ></app-vmessage>
   </div>
@@ -29,7 +29,7 @@
     </mat-form-field>
 <!--    Acredite, podemos fazer 'terneiro' assim no Angular-->
     <app-vmessage
-      *ngIf="loginForm.get('password').errors?.required"
+      *ngIf="loginForm.get('password').errors?.required && form.submitted"
       text="Senha é obrigatória "
     ></app-vmessage>
 

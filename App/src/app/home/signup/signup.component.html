@@ -2,14 +2,14 @@
   Sempre quando trabalhamos com formulario, obrigatóriamente temos que importar o FormsModule/ReactFormModule (validate no modelo)
 -->
 
-<form class="form mt-4" [formGroup]="signupForm" (submit)="signUp()">
+<form #form="ngForm" class="form mt-4" [formGroup]="signupForm" (submit)="signUp()">
   <div class="form-group">
     <mat-form-field class="w-100">
       <mat-label>E-mail</mat-label>
     <input  #inputEmail matInput placeholder="E-mail"  autofocus formControlName="email">
     </mat-form-field>
-    <app-vmessage  *ngIf="signupForm.get('email').errors?.required" text="E-mail é obrigatório!"></app-vmessage>
-    <app-vmessage *ngIf="signupForm.get('email').errors?.email" text="E-mail inválido!"></app-vmessage>
+    <app-vmessage  *ngIf="signupForm.get('email').errors?.required && form.submitted || signupForm.get('email').touched" text="E-mail é obrigatório!"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('email').errors?.email && form.submitted" text="E-mail inválido!"></app-vmessage>
   </div>
 
   <div class="form-group">
@@ -17,7 +17,7 @@
       <mat-label>Nome completo</mat-label>
     <input matInput placeholder="Nome completo" formControlName="fullName">
     </mat-form-field>
-    <app-vmessage *ngIf="signupForm.get('fullName').errors?.required" text="Nome completo é obrigatório!"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('fullName').errors?.required && form.submitted || signupForm.get('fullName').touched" text="Nome completo é obrigatório!"></app-vmessage>
   </div>
 
   <div class="form-group">
@@ -25,13 +25,13 @@
       <mat-label>Nome de usuário</mat-label>
     <input matInput placeholder="Nome de usuário"  formControlName="userName">
     </mat-form-field>
-    <app-vmessage *ngIf="signupForm.get('userName').errors?.minlength" text="Mínimo 2 caracteres!"></app-vmessage>
-    <app-vmessage *ngIf="signupForm.get('userName').errors?.maxlength" text="Máximo 30 caracteres!"></app-vmessage>
-    <app-vmessage *ngIf="signupForm.get('userName').errors?.validadorPersonalizado" text="Campo obrigatório!"></app-vmessage>
+    <app-vmessage *ngIf="(signupForm.get('userName').errors?.minlength && form.submitted) || signupForm.get('userName').touched " text="Mínimo 2 caracteres!"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('userName').errors?.maxlength && form.submitted" text="Máximo 30 caracteres!"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('userName').errors?.validadorPersonalizado && form.submitted" text="Campo obrigatório!"></app-vmessage>
 
 <!--    Nosso Validator Service-->
     <small *ngIf="signupForm.get('userName').valid" class="text-success">Disponível</small>
-    <app-vmessage text="Usuário já cadastrado" *ngIf="signupForm.get('userName').errors?.usuarioJaCadastrado"></app-vmessage>
+    <app-vmessage text="Usuário já cadastrado" *ngIf="signupForm.get('userName').errors?.usuarioJaCadastrado && form.submitted"></app-vmessage>
   </div>
 
   <div class="form-group">
@@ -39,14 +39,14 @@
       <mat-label>Senha</mat-label>
     <input matInput type="password" placeholder="password" formControlName="password">
     </mat-form-field>
-    <app-vmessage *ngIf="signupForm.get('password').errors?.required" text="Senha é obrigatória!"></app-vmessage>
-    <app-vmessage *ngIf="signupForm.get('password').errors?.minlength" text="Mínimo 2 caracteres!"></app-vmessage>
-    <app-vmessage *ngIf="signupForm.get('password').errors?.maxlength" text="Máximo 14 caracteres!"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('password').errors?.required && form.submitted || signupForm.get('password').touched" text="Senha é obrigatória!"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('password').errors?.minlength && form.submitted" text="Mínimo 2 caracteres!"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('password').errors?.maxlength && form.submitted" text="Máximo 14 caracteres!"></app-vmessage>
   </div>
 
 <!--  ATENNÇAAAAO - na sua validação, não esqueça de usar invalid & peding-->
 
-  <button [disabled]="signupForm.invalid || signupForm.pending" class="w-100 bg-dark text-white" mat-raised-button>Registrar</button>
+  <button  class="w-100 bg-dark text-white" [disabled]="this.signupForm.invalid && !this.signupForm.pending" mat-raised-button>Registrar</button>
 
 
   <p class="p-3">Já é registrado?<a [routerLink]="['']" class="ml-2">Login</a></p>

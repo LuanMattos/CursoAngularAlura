@@ -35,14 +35,20 @@ const routes:Routes = [
     /** Indico que deve seguir a rota path:'' exatamente como declarei **/
     /** Neste caso, se não for colocado, qualquer rota depois de '/' será considerada **/
     pathMatch:'full',
-    redirectTo:'home'
+    redirectTo:'home',
+    data: {
+      title:''
+    }
   },
   {
     path:'home',
     /** Aqui pedimos o carregamento sob demanda **/
     // loadChildren:'./home/home.module#HomeModule' => Angular < 8
     loadChildren:() => import('src/app/home/home.module').then(m => m.HomeModule),
-    data: {animation: 'HomePage'}
+    data: {
+      animation: 'HomePage',
+      title:'Home'
+    }
   },
   {
     path:'user/:userName',
@@ -50,26 +56,39 @@ const routes:Routes = [
     resolve:{
       photos:PhotoListResolver
     },
-    data: {animation: 'AboutPage'}
+    data: {
+      animation: 'AboutPage',
+      title:'Timeline'
+    }
   },
   {
     path:'p/add',
     component:PhotoFormComponent,
-    data: {animation: 'HomePage'},
-    canActivate:[AuthRequiredGuard]
+    canActivate:[AuthRequiredGuard],
+    data: {
+      animation: 'HomePage',
+      title:'Add Photo'
+    }
   },
   {
     path:'p/:photoId',
     component:PhotoDetailComponent,
-    data: {animation: 'FilterPage'},
+    data: {
+      animation: 'FilterPage',
+      title:'Detail Photo'
+    },
   },
   {
     path:'not-found',
-    component:NotFoundComponent
+    component:NotFoundComponent,
+    data:{
+      title:'Page not-found'
+    }
   },
   {
     path:'**',
-    redirectTo:'not-found'
+    redirectTo:'not-found',
+
   },
 
 ];

@@ -18,7 +18,17 @@ export class AuthGuard implements CanActivate{
     state: RouterStateSnapshot ){
 
     if(this.userService.isLogged()){
-      this.router.navigate(['user',this.userService.getUserName()])
+      this.router.navigate(
+        ['user', this.userService.getUserName() ],
+        {
+          /** Por algum motivo deu loop infinito **/
+          // queryParams:{
+          //   /** Aqui pegamos a última url para redirecionar automaticamente, caso o usuário não estiver logado e tentar acessar algum local **/
+          //   /** Nota: precisamos alterar no component (signin) **/
+          //   fromUrl:state.url
+          // }
+        }
+      )
       return false;
     }
     return true;

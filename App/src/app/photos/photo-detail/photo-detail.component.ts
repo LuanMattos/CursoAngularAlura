@@ -39,7 +39,8 @@ export class PhotoDetailComponent implements OnInit{
     return this.photoService.removePhoto(this.photoId)
       .subscribe(()=>{
 
-        this.router.navigate([''])
+        /** Replace true => quando excluímos uma foto e voltamos, deve retornar para o '' absolutp dando replace na url toda **/
+        this.router.navigate([''],{replaceUrl:true})
       },
         error=>{
         this.alertService.warning('Ocorreu um erro, tente mais tarde!')

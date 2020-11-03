@@ -84,7 +84,7 @@ export class SignUpComponent implements OnInit {
 
   signUp(){
     const newUser = this.signupForm.getRawValue() as NewUser;
-    if(this.signupForm.invalid && !this.signupForm.pending)
+    if(this.signupForm.valid && !this.signupForm.pending)
     this.signUpService
       .newUser(newUser)
       .subscribe(

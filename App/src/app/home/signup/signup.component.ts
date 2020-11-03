@@ -8,6 +8,7 @@ import {UserNotTakenValidatorService} from "./user-not-taken.validator.service";
 import {NewUser} from "./new-user.interface";
 import {SignupService} from "./signup.service";
 import {PlatformDetectorService} from "../../core/platform-detector/platform-detector.service";
+import {userNamePassword} from "../../shared/validators/fields-signin.validator";
 
 @Component({
   selector: 'app-signup',
@@ -66,9 +67,13 @@ export class SignUpComponent implements OnInit {
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(14),
+          ]
         ]
-      ]
-    })
+      },
+      {
+        validator:userNamePassword
+      }
+    )
   }
 
   ngAfterViewInit() {

@@ -1,5 +1,6 @@
 import {AbstractControl} from "@angular/forms";
 
+/** Podemos tambem usar o control:FormControl para validação de campos entre campos **/
 export function fieldsSignupValidator(control:AbstractControl ){
 
   /**

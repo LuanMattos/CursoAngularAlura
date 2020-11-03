@@ -42,6 +42,7 @@
     <app-vmessage *ngIf="signupForm.get('password').errors?.required && form.submitted || signupForm.get('password').touched" text="Senha é obrigatória!"></app-vmessage>
     <app-vmessage *ngIf="signupForm.get('password').errors?.minlength && form.submitted" text="Mínimo 2 caracteres!"></app-vmessage>
     <app-vmessage *ngIf="signupForm.get('password').errors?.maxlength && form.submitted" text="Máximo 14 caracteres!"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.errors?.userNamePassword && form.submitted || signupForm.get('password').touched" text="Senha e nome de usuário devem ser diferentes"></app-vmessage>
   </div>
 
 <!--  ATENNÇAAAAO - na sua validação, não esqueça de usar invalid & peding-->
